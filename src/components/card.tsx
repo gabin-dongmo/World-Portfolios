@@ -1,4 +1,4 @@
-import Profile from "../models/profile";
+import Profile from "../models/Profile";
 import "./../styles/card.scss";
 
 const Card = ({ name, link, tags }: Profile) => {
@@ -10,13 +10,11 @@ const Card = ({ name, link, tags }: Profile) => {
           {link}
         </a>
       </div>
-      {tags && (
-        <div className="card-tags">
-          {tags.map((tag, index) => (
-            <span key={index}>{tag}</span>
-          ))}
-        </div>
-      )}
+      <div className="card-tags">
+        {tags.map((tag, index) => (
+          <span key={index}>{tag}</span>
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,14 +1,14 @@
-import Card from "./components/card";
-import NavBar from "./components/navbar";
-import Section from "./components/section";
+import Card from "./components/Card";
+import NavBar from "./components/Navbar";
+import Section from "./components/Section";
 import "./styles/App.scss";
-import dataOrder from "./data/dataOrder";
-import tags from "./data/tags";
-import Footer from "./components/footer";
+import profiles from "./data/Profiles";
+import tags from "./data/Tags";
+import Footer from "./components/Footer";
 import { useState } from "react";
 
 function App() {
-  const [filteredData, setFilteredData] = useState(dataOrder);
+  const [filteredData, setFilteredData] = useState(profiles);
   let filterValue = "";
 
   const changeFilterValue = (value: string) => {
@@ -19,14 +19,26 @@ function App() {
   const filterDataByName = () => {
     if (filterValue !== "") {
       setFilteredData(
-        dataOrder.filter(
+        profiles.filter(
           ({ name }) =>
             name.toLowerCase().indexOf(filterValue.toLowerCase()) !== -1
         )
       );
     } else {
-      setFilteredData(dataOrder);
+      setFilteredData(profiles);
     }
+  };
+
+  const onSelectTag = (tag: string) => {
+    if (tag === "All tags") setFilteredData(profiles);
+    else
+      setFilteredData(
+        profiles.filter((profile) =>
+          profile.tags
+            .map((tag) => tag.toLowerCase())
+            .includes(tag.toLowerCase())
+        )
+      );
   };
 
   return (
@@ -45,9 +57,16 @@ function App() {
           <aside className="main-container-aside">
             <h2>Filter by</h2>
             <div className="main-container-aside-tags">
-              <button className="active">All tags</button>
+              <button
+                onClick={() => onSelectTag("All tags")}
+                className="active"
+              >
+                All tags
+              </button>
               {tags.map((tag, index) => (
-                <button key={index}>{tag}</button>
+                <button onClick={() => onSelectTag(tag)} key={index}>
+                  {tag}
+                </button>
               ))}
             </div>
           </aside>

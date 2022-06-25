@@ -1,4 +1,4 @@
-import profiles from "./profiles";
+import profiles from "./Profiles";
 
 const tags = profiles.reduce((tagsList: string[], profile) => {
   profile.tags.forEach((tag) => {

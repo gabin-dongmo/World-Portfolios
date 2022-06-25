@@ -1,4 +1,5 @@
-import Profile from "../models/profile";
+import Profile from "../models/Profile";
+import Utils from "./Utils";
 
 const profiles: Profile[] = [
   {
@@ -141,4 +142,4 @@ const profiles: Profile[] = [
   },
 ];
 
-export default profiles;
+export default Utils.OrderAlphabetically<Profile>(profiles);
