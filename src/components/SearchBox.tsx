@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 
-import tags from "../data/Tags";
+import Tag from "../models/Tag";
 
 interface SearchBoxProps {
   changeSearchTerm: (searchTerm: string) => void;
-  onSelectTag: (tag: string) => void;
+  onSelectTag: (tag: Tag) => void;
+  tags: Tag[];
 }
 
-const SearchBox = ({ changeSearchTerm, onSelectTag }: SearchBoxProps) => {
-  const [currentTags] = useState(tags);
+const SearchBox = ({ changeSearchTerm, onSelectTag, tags }: SearchBoxProps) => {
+  const defaultTag = tags.filter((t) => t.text === "All tags")[0];
+  tags = tags.filter((t, i, a) => t !== defaultTag);
+
   return (
     <React.Fragment>
       <aside className="main-container-aside">
@@ -23,12 +26,19 @@ const SearchBox = ({ changeSearchTerm, onSelectTag }: SearchBoxProps) => {
         </div>
         <h2>Filter by</h2>
         <div className="main-container-aside-tags">
-          <button onClick={() => onSelectTag("All tags")} className="active">
+          <button
+            onClick={() => onSelectTag(defaultTag)}
+            className={defaultTag.isActive ? "active" : ""}
+          >
             All tags
           </button>
-          {currentTags.map((tag, index) => (
-            <button onClick={() => onSelectTag(tag)} key={index}>
-              {tag}
+          {tags.map((tag, index) => (
+            <button
+              onClick={() => onSelectTag(tag)}
+              key={index}
+              className={tag.isActive ? "active" : ""}
+            >
+              {tag.text}
             </button>
           ))}
         </div>
