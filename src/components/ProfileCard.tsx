@@ -1,8 +1,9 @@
 import React from "react";
+
 import Profile from "../models/Profile";
 import "./../styles/card.scss";
 
-const Card = ({ name, link, tags }: Profile) => {
+const ProfileCard = ({ name, link, tags }: Profile) => {
   return (
     <React.Fragment>
       <div className="card">
@@ -22,4 +23,4 @@ const Card = ({ name, link, tags }: Profile) => {
   );
 };
 
-export default Card;
+export default ProfileCard;

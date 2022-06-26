@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import tags from "../data/Tags";
 
 interface SearchBoxProps {

@@ -1,17 +1,18 @@
 import React from "react";
+
 import Profile from "../models/Profile";
-import Card from "./Card";
+import ProfileCard from "./ProfileCard";
 
 interface CardBoardProps {
   profiles: Profile[];
 }
 
-const CardBoard = ({ profiles }: CardBoardProps) => {
+const ProfileCardBoard = ({ profiles }: CardBoardProps) => {
   return (
     <React.Fragment>
       <div className="main-container-body">
         {profiles.map((profile, index) => (
-          <Card
+          <ProfileCard
             key={index}
             id={profile.id}
             name={profile.name}
@@ -25,4 +26,4 @@ const CardBoard = ({ profiles }: CardBoardProps) => {
   );
 };
 
-export default CardBoard;
+export default ProfileCardBoard;
