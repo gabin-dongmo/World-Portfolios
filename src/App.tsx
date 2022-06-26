@@ -50,11 +50,20 @@ function App() {
           alt="arrow-up"
         />
       </a>
-      <NavBar onChangeValue={changeFilterValue} />
+      <NavBar />
       <Section />
       <main className="main">
         <div className="main-container">
           <aside className="main-container-aside">
+            <div className="main-container-aside-search">
+              <input
+                onChange={(e: { target: { value: string } }) =>
+                  changeFilterValue(e.target.value)
+                }
+                type="text"
+                placeholder="Find a portfolio..."
+              />
+            </div>
             <h2>Filter by</h2>
             <div className="main-container-aside-tags">
               <button

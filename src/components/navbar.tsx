@@ -1,13 +1,6 @@
 import "./../styles/navbar.scss";
 
-interface NavBarProps {
-  onChangeValue: (filterValue: string) => void;
-}
-
-const NavBar = ({ onChangeValue }: NavBarProps) => {
-  const handelChangeFilter = (e: { target: { value: string } }) => {
-    onChangeValue(e.target.value);
-  };
+const NavBar = () => {
 
   return (
     <nav className="nav" id="#nav">
@@ -19,16 +12,6 @@ const NavBar = ({ onChangeValue }: NavBarProps) => {
           <img src="assets/images/logo.svg" alt="logo" />
         </a>
         <div className="nav-container-menu">
-          <div className="nav-container-menu-search">
-            <input
-              type="text"
-              onChange={handelChangeFilter}
-              placeholder="Search a portfolio ..."
-            />
-            <button>
-              <img src="assets/images/search-eye-line.svg" alt="search" />
-            </button>
-          </div>
           <a
             href="https://github.com/ln-dev7/cameroon-portfolios/blob/master/CONTRIBUTING.md"
             className="nav-container-menu-link"
