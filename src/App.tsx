@@ -1,38 +1,38 @@
-import Card from "./components/Card";
 import NavBar from "./components/Navbar";
 import Section from "./components/Section";
 import "./styles/App.scss";
 import profiles from "./data/Profiles";
-import tags from "./data/Tags";
 import Footer from "./components/Footer";
 import { useState } from "react";
+import CardBoard from "./components/CardBoard";
+import SearchBox from "./components/SearchBox";
 
 function App() {
-  const [filteredData, setFilteredData] = useState(profiles);
-  let filterValue = "";
+  const [currentProfiles, setCurrentProfiles] = useState(profiles);
+  let searchTerm = "";
 
-  const changeFilterValue = (value: string) => {
-    filterValue = value;
-    filterDataByName();
+  const changeSearchTerm = (value: string) => {
+    searchTerm = value;
+    searchProfilesByName();
   };
 
-  const filterDataByName = () => {
-    if (filterValue !== "") {
-      setFilteredData(
+  const searchProfilesByName = () => {
+    if (searchTerm !== "") {
+      setCurrentProfiles(
         profiles.filter(
           ({ name }) =>
-            name.toLowerCase().indexOf(filterValue.toLowerCase()) !== -1
+            name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
         )
       );
     } else {
-      setFilteredData(profiles);
+      setCurrentProfiles(profiles);
     }
   };
 
   const onSelectTag = (tag: string) => {
-    if (tag === "All tags") setFilteredData(profiles);
+    if (tag === "All tags") setCurrentProfiles(profiles);
     else
-      setFilteredData(
+      setCurrentProfiles(
         profiles.filter((profile) =>
           profile.tags
             .map((tag) => tag.toLowerCase())
@@ -54,43 +54,11 @@ function App() {
       <Section />
       <main className="main">
         <div className="main-container">
-          <aside className="main-container-aside">
-            <div className="main-container-aside-search">
-              <input
-                onChange={(e: { target: { value: string } }) =>
-                  changeFilterValue(e.target.value)
-                }
-                type="text"
-                placeholder="Find a portfolio..."
-              />
-            </div>
-            <h2>Filter by</h2>
-            <div className="main-container-aside-tags">
-              <button
-                onClick={() => onSelectTag("All tags")}
-                className="active"
-              >
-                All tags
-              </button>
-              {tags.map((tag, index) => (
-                <button onClick={() => onSelectTag(tag)} key={index}>
-                  {tag}
-                </button>
-              ))}
-            </div>
-          </aside>
-          <div className="main-container-body">
-            {filteredData.map((profile, index) => (
-              <Card
-                key={index}
-                id={profile.id}
-                name={profile.name}
-                link={profile.link}
-                tags={profile.tags}
-              />
-            ))}
-            {filteredData.length === 0 && <h2>No portfolios found ...</h2>}
-          </div>
+          <SearchBox
+            changeSearchTerm={changeSearchTerm}
+            onSelectTag={onSelectTag}
+          />
+          <CardBoard profiles={currentProfiles} />
         </div>
       </main>
       <Footer />
