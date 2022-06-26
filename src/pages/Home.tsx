@@ -8,10 +8,15 @@ import {
   SearchBox,
   Section,
 } from "../components";
+import Tag from "../models/Tag";
+import tags from "../data/Tags";
 
 const Home = () => {
   const [currentProfiles, setCurrentProfiles] = useState(profiles);
+  const [currentTags, setCurrentTags] = useState(tags);
   let searchTerm = "";
+
+  
 
   const changeSearchTerm = (value: string) => {
     searchTerm = value;
@@ -31,16 +36,24 @@ const Home = () => {
     }
   };
 
-  const onSelectTag = (tag: string) => {
-    if (tag === "All tags") setCurrentProfiles(profiles);
-    else
+  const onSelectTag = (tag: Tag) => {
+    if (tag.text === "All tags") {
+      setCurrentProfiles(profiles);
+    } else {
       setCurrentProfiles(
         profiles.filter((profile) =>
           profile.tags
             .map((tag) => tag.toLowerCase())
-            .includes(tag.toLowerCase())
+            .includes(tag.text.toLowerCase())
         )
       );
+    }
+    const currentTag = currentTags.filter((t) => t.text.toLowerCase() === tag.text.toLowerCase())[0];
+    currentTag.isActive = true;
+    currentTags.filter((t) => t.text.toLowerCase() !== tag.text.toLowerCase()).forEach(t => t.isActive = false);
+    console.log(currentTags);
+    
+    setCurrentTags(currentTags);
   };
 
   return (
@@ -60,6 +73,7 @@ const Home = () => {
             <SearchBox
               changeSearchTerm={changeSearchTerm}
               onSelectTag={onSelectTag}
+              tags={currentTags}
             />
             <ProfileCardBoard profiles={currentProfiles} />
           </div>
