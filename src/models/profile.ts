@@ -1,6 +1,7 @@
-export default interface Profile {
+import { SortableByName } from "./SortableByName";
+
+export default interface Profile extends SortableByName {
   id: number;
-  name: string;
   link: string;
   tags: string[];
 }

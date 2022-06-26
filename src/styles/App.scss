@@ -33,6 +33,18 @@
         color: $dark;
         margin-bottom: 0.75rem;
       }
+      &-search {
+        input {
+          padding: 0.5rem 2.5rem 0.5rem 1rem;
+          outline: none;
+          border-radius: 5px;
+          border: 2px solid rgba(87, 111, 127, 0.3);
+          background: #F9FAFB;
+          width: 100%;
+          height: 40px;
+          margin-bottom: 15px;
+        }
+      }
       &-tags {
         display: flex;
         flex-wrap: wrap;
