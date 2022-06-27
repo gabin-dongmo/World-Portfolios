@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 
 import "./../styles/section.scss";
 
-const Section = () => {
+const Section: FC = () => {
   return (
     <React.Fragment>
       <section className="section">

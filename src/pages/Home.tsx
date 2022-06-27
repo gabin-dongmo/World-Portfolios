@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 
 import profiles from "../data/Profiles";
 import {
@@ -11,7 +11,7 @@ import {
 import Tag from "../models/Tag";
 import tags from "../data/Tags";
 
-const Home = () => {
+const Home : FC = () => {
   const [currentProfiles, setCurrentProfiles] = useState(profiles);
   const [currentTags, setCurrentTags] = useState(tags);
   let searchTerm = "";

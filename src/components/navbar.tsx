@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 
 import "./../styles/navbar.scss";
 
-const NavBar = () => {
+const NavBar: FC = () => {
   return (
     <React.Fragment>
       <nav className="nav" id="#nav">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC } from "react";
 
 import Tag from "../models/Tag";
 
@@ -8,7 +8,7 @@ interface SearchBoxProps {
   tags: Tag[];
 }
 
-const SearchBox = ({ changeSearchTerm, onSelectTag, tags }: SearchBoxProps) => {
+const SearchBox : FC<SearchBoxProps> = ({ changeSearchTerm, onSelectTag, tags }) => {
   const defaultTag = tags.filter((t) => t.text === "All tags")[0];
   tags = tags.filter((t, i, a) => t !== defaultTag);
 
