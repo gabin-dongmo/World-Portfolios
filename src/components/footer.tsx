@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 
 import "./../styles/footer.scss";
 
-const Footer = () => {
+const Footer: FC = () => {
   return (
     <React.Fragment>
       <footer className="footer">

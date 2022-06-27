@@ -1,9 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 
 import Profile from "../models/Profile";
 import "./../styles/card.scss";
 
-const ProfileCard = ({ name, link, tags }: Profile) => {
+const ProfileCard: FC<Profile> = ({ name, link, tags }) => {
   return (
     <React.Fragment>
       <div className="card">

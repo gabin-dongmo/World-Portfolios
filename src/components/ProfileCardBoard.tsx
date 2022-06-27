@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 import Profile from "../models/Profile";
 import ProfileCard from "./ProfileCard";
@@ -7,7 +7,7 @@ interface CardBoardProps {
   profiles: Profile[];
 }
 
-const ProfileCardBoard = ({ profiles }: CardBoardProps) => {
+const ProfileCardBoard: FC<CardBoardProps> = ({ profiles }) => {
   return (
     <React.Fragment>
       <div className="main-container-body">
