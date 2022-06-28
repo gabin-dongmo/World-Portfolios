@@ -13,37 +13,35 @@ const SearchBox : FC<SearchBoxProps> = ({ changeSearchTerm, onSelectTag, tags })
   tags = tags.filter((t, i, a) => t !== defaultTag);
 
   return (
-    <React.Fragment>
-      <aside className="main-container-aside">
-        <div className="main-container-aside-search">
-          <input
-            onChange={(e: { target: { value: string } }) =>
-              changeSearchTerm(e.target.value)
-            }
-            type="text"
-            placeholder="Find a portfolio..."
-          />
-        </div>
-        <h2>Filter by</h2>
-        <div className="main-container-aside-tags">
+    <aside className="main-container-aside">
+      <div className="main-container-aside-search">
+        <input
+          onChange={(e: { target: { value: string } }) =>
+            changeSearchTerm(e.target.value)
+          }
+          type="text"
+          placeholder="Find a portfolio..."
+        />
+      </div>
+      <h2>Filter by</h2>
+      <div className="main-container-aside-tags">
+        <button
+          onClick={() => onSelectTag(defaultTag)}
+          className={defaultTag.isActive ? "active" : ""}
+        >
+          All tags
+        </button>
+        {tags.map((tag, index) => (
           <button
-            onClick={() => onSelectTag(defaultTag)}
-            className={defaultTag.isActive ? "active" : ""}
+            onClick={() => onSelectTag(tag)}
+            key={index}
+            className={tag.isActive ? "active" : ""}
           >
-            All tags
+            {tag.text}
           </button>
-          {tags.map((tag, index) => (
-            <button
-              onClick={() => onSelectTag(tag)}
-              key={index}
-              className={tag.isActive ? "active" : ""}
-            >
-              {tag.text}
-            </button>
-          ))}
-        </div>
-      </aside>
-    </React.Fragment>
+        ))}
+      </div>
+    </aside>
   );
 };
 

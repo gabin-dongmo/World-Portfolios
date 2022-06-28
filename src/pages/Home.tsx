@@ -57,30 +57,28 @@ const Home : FC = () => {
   };
 
   return (
-    <React.Fragment>
-      <div className="App">
-        <a href="#">
-          <img
-            className="to-top"
-            src="assets/images/arrow-up-circle-fill.svg"
-            alt="arrow-up"
+    <div className="App">
+      <a href="#">
+        <img
+          className="to-top"
+          src="assets/images/arrow-up-circle-fill.svg"
+          alt="arrow-up"
+        />
+      </a>
+      <NavBar />
+      <Section />
+      <main className="main">
+        <div className="main-container">
+          <SearchBox
+            changeSearchTerm={changeSearchTerm}
+            onSelectTag={onSelectTag}
+            tags={currentTags}
           />
-        </a>
-        <NavBar />
-        <Section />
-        <main className="main">
-          <div className="main-container">
-            <SearchBox
-              changeSearchTerm={changeSearchTerm}
-              onSelectTag={onSelectTag}
-              tags={currentTags}
-            />
-            <ProfileCardBoard profiles={currentProfiles} />
-          </div>
-        </main>
-        <Footer />
-      </div>
-    </React.Fragment>
+          <ProfileCardBoard profiles={currentProfiles} />
+        </div>
+      </main>
+      <Footer />
+    </div>
   );
 };
 

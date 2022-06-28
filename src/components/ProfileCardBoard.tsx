@@ -9,20 +9,18 @@ interface CardBoardProps {
 
 const ProfileCardBoard: FC<CardBoardProps> = ({ profiles }) => {
   return (
-    <React.Fragment>
-      <div className="main-container-body">
-        {profiles.map((profile, index) => (
-          <ProfileCard
-            key={index}
-            id={profile.id}
-            name={profile.name}
-            link={profile.link}
-            tags={profile.tags}
-          />
-        ))}
-        {profiles.length === 0 && <h2>No portfolios found ...</h2>}
-      </div>
-    </React.Fragment>
+    <div className="main-container-body">
+      {profiles.map((profile, index) => (
+        <ProfileCard
+          key={index}
+          id={profile.id}
+          name={profile.name}
+          link={profile.link}
+          tags={profile.tags}
+        />
+      ))}
+      {profiles.length === 0 && <h2>No portfolios found ...</h2>}
+    </div>
   );
 };
 
