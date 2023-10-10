@@ -622,6 +622,36 @@ const cmData: UserProfile[] = [
       linkedin: "michel-btompe-3a0bb3234",
     },
   },
+  {
+    name: "FLORIAN TCHOMGA",
+    link: "https://flocod.github.io/florian",
+    tags: ["FrontEnd", "Backend"],
+    socials: {
+      twitter: "flocodx",
+      github: "flocod",
+      linkedin: "flocod",
+    },
+  },
+  {
+    name: "Zemfack Ngimdock",
+    link: "https://ngimdock-zemfack.vercel.app/",
+    tags: ["FrontEnd", "Backend"],
+    socials: {
+      twitter: "NZemfack",
+      github: "ngimdock",
+      linkedin: "ngimdock-zemfack",
+    },
+  },
+  {
+    name: "Michel BTOMPE",
+    link: "https://michelbtompe.vercel.app",
+    tags: ["FrontEnd", "Backend"],
+    socials: {
+      twitter: "MichelBTOMPE",
+      github: "Tom-michel",
+      linkedin: "michel-btompe-3a0bb3234",
+    },
+  },
 ];
 
 export default cmData;

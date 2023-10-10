@@ -15,25 +15,22 @@ const cleanUrl = (link: string) => {
 
 export default function Header({ name, link, tags, socials }: UserProfile) {
   const [previewCardIsOpen, setPreviewCardIsOpen] = useState(false);
-  const handlePreviewCardOpen = () => {
-    setPreviewCardIsOpen(true);
-  };
-  const handlePreviewCardClose = () => {
-    setPreviewCardIsOpen(false);
+  const togglePreviewCardVisibility = () => {
+    setPreviewCardIsOpen(!previewCardIsOpen);
   };
 
   return (
     <>
-      <Modal show={previewCardIsOpen} onHide={handlePreviewCardClose}>
+      <Modal show={previewCardIsOpen} onHide={togglePreviewCardVisibility}>
         <PreviewCard
-          handlePreviewCardClose={handlePreviewCardClose}
+          handlePreviewCardClose={togglePreviewCardVisibility}
           name={name}
           link={link}
           tags={tags}
           socials={socials}
         />
       </Modal>
-      <div className="card" onClick={handlePreviewCardOpen}>
+      <div className="card" onClick={togglePreviewCardVisibility}>
         <div className="card-container">
           <h2>{name}</h2>
           {typeof link === "string" && (

@@ -2,11 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 import { Context } from "@/context/countryContext";
-import SvgViewBox from "@/components/SvgViewBox";
-import UserProfile from "@/interfaces/userProfile.interface";
-import CardSocial from "@/components/CardSocial.";
-
-type Props = UserProfile & { handlePreviewCardClose: () => void };
+import { CardCloseSvg, GithubSvg, LinkedInSvg, TwitterSvg } from "./Icons";
 
 export default function PreviewCard({
   name,
@@ -27,10 +23,7 @@ export default function PreviewCard({
     <div className="preview-card">
       <div className="card">
         <button className="card-close" onClick={handlePreviewCardClose}>
-          <SvgViewBox>
-            <path d="M18 6 6 18"></path>
-            <path d="m6 6 12 12"></path>
-          </SvgViewBox>
+          <CardCloseSvg />
         </button>
         <div className="card-banner">
           <Image
@@ -50,9 +43,36 @@ export default function PreviewCard({
             ))}
           </div>
           <div className="card-socials">
-            <CardSocial handle={socials.twitter} media={'twitter'} />
-            <CardSocial handle={socials.github} media={'github'} />
-            <CardSocial handle={socials.linkedin} media={'linkedIn'} />
+            {socials.twitter !== "" && (
+              <Link
+                href={"https://twitter.com/" + socials.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social__twitter"
+              >
+                <TwitterSvg />
+              </Link>
+            )}
+            {socials.github !== "" && (
+              <Link
+                href={"https://github.com/" + socials.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social__github"
+              >
+                <GithubSvg context={"default"} />
+              </Link>
+            )}
+            {socials.linkedin !== "" && (
+              <Link
+                href={"https://linkedin.com/in/" + socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social__linkedin"
+              >
+                <LinkedInSvg />
+              </Link>
+            )}
           </div>
 
           {typeof link === "string" && (
