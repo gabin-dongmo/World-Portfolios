@@ -2,8 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 import { Context } from "@/context/countryContext";
-import { CardCloseSvg, GithubSvg, LinkedInSvg, TwitterSvg } from "./Icons";
+import { CardCloseSvg } from "./Icons";
+import CardSocial from "@/components/CardSocial.";
+import UserProfile from "@/interfaces/userProfile.interface";
 
+type Props = UserProfile & { handlePreviewCardClose: () => void };
 export default function PreviewCard({
   name,
   link,
@@ -11,12 +14,14 @@ export default function PreviewCard({
   socials,
   handlePreviewCardClose,
 }: Props) {
-  const { country } = useContext(Context);
-  const { code: currentCountryCode, name: currentCountryName } = country;
+  const {
+    country: { code: currentCountryCode, name: currentCountryName },
+  } = useContext(Context);
   const buildInitials = (name: string) => {
-    return name.split(" ")[1] === undefined
-      ? name.split(" ")[0][0] + name.split(" ")[0][1]
-      : name.split(" ")[0][0] + name.split(" ")[1][0];
+    const cleanName = name.split(" ");
+    return cleanName[1] === undefined
+      ? cleanName[0][0] + cleanName[0][1]
+      : cleanName[0][0] + cleanName[1][0];
   };
 
   return (
@@ -43,36 +48,9 @@ export default function PreviewCard({
             ))}
           </div>
           <div className="card-socials">
-            {socials.twitter !== "" && (
-              <Link
-                href={"https://twitter.com/" + socials.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social__twitter"
-              >
-                <TwitterSvg />
-              </Link>
-            )}
-            {socials.github !== "" && (
-              <Link
-                href={"https://github.com/" + socials.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social__github"
-              >
-                <GithubSvg context={"default"} />
-              </Link>
-            )}
-            {socials.linkedin !== "" && (
-              <Link
-                href={"https://linkedin.com/in/" + socials.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social__linkedin"
-              >
-                <LinkedInSvg />
-              </Link>
-            )}
+            <CardSocial handle={socials.twitter} media={"twitter"} />
+            <CardSocial handle={socials.github} media={"github"} />
+            <CardSocial handle={socials.linkedin} media={"linkedIn"} />
           </div>
 
           {typeof link === "string" && (
