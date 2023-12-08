@@ -1,0 +1,40 @@
+$gray: #576f7f;
+$dark: #24273f;
+$orange: #f9322c;
+$blue: #08b2e3;
+$light: #f9fafb;
+$green: #059669;
+$white: #fff;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: var(--font-inter);
+  color: $gray;
+  transition: 0.3s ease-out;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: $light;
+  overflow-x: hidden;
+}
+
+body.dark {
+  background-color: #10172a;
+}

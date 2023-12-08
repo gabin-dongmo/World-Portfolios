@@ -1,0 +1,154 @@
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 2rem 0 1rem 0;
+  background: $white;
+  border-bottom: 1px solid rgba($color: $gray, $alpha: 0.2);
+  &-intro {
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__head {
+      width: 100%;
+      h1 {
+        font-family: "Overpass", sans-serif;
+        color: $green;
+        font-size: 2.5rem;
+        @media screen and (max-width: 768px) {
+          font-size: 2rem;
+        }
+      }
+      p {
+        padding: 1rem 0;
+        font-size: 1.3rem;
+        color: $dark;
+        @media screen and (max-width: 768px) {
+          font-size: 1.2rem;
+        }
+      }
+      .options {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 0.5em;
+        padding-bottom: 1rem;
+        a {
+          display: inline-block;
+          padding: 0.5rem 1rem;
+          border-radius: 5px;
+          border: 2px solid $white;
+          background: $white;
+          color: $green;
+          font-weight: 500;
+          box-shadow: 0 0 0 2px $green;
+          &:hover {
+            background-color: rgba($color: $green, $alpha: 0.05);
+          }
+        }
+        select,
+        a:nth-child(2) {
+          cursor: pointer;
+          outline: none;
+          padding: 0.6rem 1rem;
+          border-radius: 5px;
+          border: 2px solid rgba($color: $green, $alpha: 0.05);
+          background: rgba($color: $green, $alpha: 0.05);
+          color: $green;
+          font-weight: 500;
+          box-shadow: 0 0 0 2px rgba($color: $green, $alpha: 0.05);
+          option {
+            cursor: pointer;
+          }
+        }
+      }
+      span {
+        font-style: italic;
+        margin-top: 3rem;
+        span {
+          text-decoration: underline;
+          text-underline-offset: 4px;
+          font-weight: 500;
+        }
+        a {
+          text-decoration: underline;
+          text-underline-offset: 4px;
+          font-weight: 500;
+          color: $blue;
+        }
+      }
+      .list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 1rem 0;
+        &-countries {
+          //width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          a {
+            width: 25px;
+            height: 25px;
+            overflow: hidden;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #cbd5e1;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+        &-buymeacoffee {
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+}
+
+body.dark {
+  .section {
+    background: #0b1121;
+    &-intro {
+      &__head {
+        h1 {
+          color: $white;
+        }
+        p {
+          color: #94a3b8;
+        }
+        .options {
+          a {
+            color: $white;
+            background: none;
+            border-color: #0b1121;
+            box-shadow: 0 0 0 2px #0ea5e9;
+            &:hover {
+              background-color: rgba($color: #0ea5e9, $alpha: 0.05);
+            }
+          }
+          select,
+          a:nth-child(2) {
+            color: $white;
+            background: rgba($color: #0ea5e9, $alpha: 0.05);
+            border-color: rgba($color: #0ea5e9, $alpha: 0.05);
+            box-shadow: 0 0 0 2px rgba($color: #0ea5e9, $alpha: 0.05);
+          }
+        }
+      }
+    }
+  }
+}
