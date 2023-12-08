@@ -1,22 +1,20 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { Modal } from "react-bootstrap";
-import { useContext, useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
-import { Context } from "@/context/countryContext";
+import Image from 'next/image';
+import { Modal } from 'react-bootstrap';
+import { useContext, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Context } from '@/contexts/countryContext';
+import { ThemeContext } from '@/contexts/ThemeContext';
 import {
   CardCloseSvg,
   LogoSvg,
   MergeRequestSvg,
   SubmitFormSvg,
-  Theme,
-  ThemeSvg,
-} from "./Icons";
+  ThemeSvg
+} from './Icons';
 
-const NavBar = ({
-  onChangeValue,
-}: {
+const NavBar = ({ onChangeValue }: {
   onChangeValue: (value: string) => void;
 }) => {
   const handelChangeFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,34 +23,9 @@ const NavBar = ({
 
   const router = useRouter();
 
-  const [theme, setTheme] = useState<Theme>("light");
-  const bodyElement = useRef<HTMLElement>(null!);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
-  useEffect(() => {
-    bodyElement.current = document.body;
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setTheme(savedTheme);
-    }
-  }, []);
-  
-  useEffect(() => {
-    if (theme === "light") {
-      bodyElement.current.classList.remove("dark");
-      bodyElement.current.classList.add("light");
-    } else {
-      bodyElement.current.classList.remove("light");
-      bodyElement.current.classList.add("dark");
-    }
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-    localStorage.setItem("theme", theme === "light" ? "dark" : "light");
-  }
-
-  const { country } = useContext(Context);
-  const { name: currentCountryName, flag: currentCountryFlag } = country;
+  const { country: { name: countryName, flag: countryFlag } } = useContext(Context);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const toggleModalVisibility = () => {
@@ -65,10 +38,10 @@ const NavBar = ({
   };
   const handleFormSubmittedClose = () => {
     setFormSubmitted(false);
-    router.push("/");
+    router.push('/');
   };
   useEffect(() => {
-    if (window.location.search.includes("?submittedform=true")) {
+    if (window.location.search.includes('?submittedform=true')) {
       handleFormSubmittedOpen();
     }
   }, []);
@@ -76,29 +49,29 @@ const NavBar = ({
   return (
     <>
       <Modal show={formSubmitted} onHide={handleFormSubmittedClose}>
-        <div className="submitted-modal">
-          <div className="card">
+        <div className='submitted-modal'>
+          <div className='card'>
             <p>
               Your form has been successfully submitted, we will process it for
               a maximum of <span>72 hours</span>. If after this time you don’t
-              always see your portfolio on the platte form,{" "}
+              always see your portfolio on the platte form,{' '}
               <a
-                href="https://twitter.com/ln_dev7"
-                target="_blank"
-                rel="noreferrer"
+                href='https://twitter.com/ln_dev7'
+                target='_blank'
+                rel='noreferrer'
               >
                 Leave me a message
-              </a>{" "}
-              or{" "}
+              </a>{' '}
+              or{' '}
               <a
-                href="https://github.com/ln-dev7/world-portfolios/blob/master/CONTRIBUTING.md"
-                target="_blank"
-                rel="noreferrer"
+                href='https://github.com/ln-dev7/world-portfolios/blob/master/CONTRIBUTING.md'
+                target='_blank'
+                rel='noreferrer'
               >
                 submit a PR on GitHub.
               </a>
             </p>
-            <button className="card-close" onClick={handleFormSubmittedClose}>
+            <button className='card-close' onClick={handleFormSubmittedClose}>
               <span>Okay</span>
             </button>
           </div>
@@ -106,23 +79,23 @@ const NavBar = ({
       </Modal>
 
       <Modal show={modalIsOpen} onHide={toggleModalVisibility}>
-        <div className="add-modal">
-          <div className="card">
-            <button className="card-close" onClick={toggleModalVisibility}>
+        <div className='add-modal'>
+          <div className='card'>
+            <button className='card-close' onClick={toggleModalVisibility}>
               <CardCloseSvg />
             </button>
             <a
-              href="https://github.com/ln-dev7/world-portfolios/blob/master/CONTRIBUTING.md"
-              target="_blank"
-              rel="noreferrer"
+              href='https://github.com/ln-dev7/world-portfolios/blob/master/CONTRIBUTING.md'
+              target='_blank'
+              rel='noreferrer'
             >
               <MergeRequestSvg />
               <span>Submit a Pull Request</span>
             </a>
             <a
-              href="https://sharuco.lndev.me/form/view/zf3hEPNse8yK2BKt47GP"
-              target="_blank"
-              rel="noreferrer"
+              href='https://sharuco.lndev.me/form/view/zf3hEPNse8yK2BKt47GP'
+              target='_blank'
+              rel='noreferrer'
             >
               <SubmitFormSvg />
               <span>Submit a Form</span>
@@ -130,32 +103,32 @@ const NavBar = ({
           </div>
         </div>
       </Modal>
-      <nav className="nav" id="#nav">
-        <div className="nav-container">
-          <div className="nav-container-left">
-            <div className="nav-container-left-flag">
+      <nav className='nav' id='#nav'>
+        <div className='nav-container'>
+          <div className='nav-container-left'>
+            <div className='nav-container-left-flag'>
               <Image
-                alt={`${currentCountryName}`}
-                src={`${currentCountryFlag}`}
+                alt={countryName}
+                src={countryFlag}
                 width={500}
                 height={500}
               />
             </div>
-            <a href="https://wp.lndev.me/" className="nav-container-left-logo">
+            <a href='https://wp.lndev.me/' className='nav-container-left-logo'>
               <LogoSvg />
             </a>
           </div>
-          <div className="nav-container-menu">
-            <div className="nav-container-menu-search">
+          <div className='nav-container-menu'>
+            <div className='nav-container-menu-search'>
               <input
-                type="text"
+                type='text'
                 onChange={handelChangeFilter}
-                placeholder="Search a portfolio ..."
+                placeholder='Search a portfolio ...'
               />
               <button>
                 <Image
-                  src="assets/search-eye-line.svg"
-                  alt="search"
+                  src='assets/search-eye-line.svg'
+                  alt='search'
                   width={22}
                   height={22}
                 />
@@ -163,12 +136,12 @@ const NavBar = ({
             </div>
             <button
               onClick={toggleModalVisibility}
-              className="nav-container-menu-link"
+              className='nav-container-menu-link'
             >
               <span>Add your portfolio</span>
               <span> + </span>
             </button>
-            <button onClick={toggleTheme} className="nav-container-menu-mode">
+            <button onClick={toggleTheme} className='nav-container-menu-mode'>
               <ThemeSvg theme={theme} />
             </button>
           </div>

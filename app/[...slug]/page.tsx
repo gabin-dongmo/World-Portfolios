@@ -11,6 +11,7 @@ import MainLogic from "@/utils/mainLogic";
 import { portfolios } from "@/helpers/portfolios";
 import countries from "@/helpers/countries";
 import { notFound } from "next/navigation";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 type PageProps = {
   params: {
@@ -37,7 +38,9 @@ export default function PortfolioList({ params }: PageProps) {
   return (
     <div className="App">
       <Top />
-      <NavBar onChangeValue={filterByName} />
+      <ThemeProvider>
+        <NavBar onChangeValue={filterByName} />
+      </ThemeProvider>
       <Section />
       <main className="main">
         <div className="main-container">
