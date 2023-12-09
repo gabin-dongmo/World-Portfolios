@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
-import { Context } from "@/contexts/countryContext";
+import { Context } from "@/components/contexts/countryContext";
 import { CardCloseSvg } from "./Icons";
 import CardSocial from "@/components/CardSocial.";
 import UserProfile from "@/interfaces/userProfile.interface";

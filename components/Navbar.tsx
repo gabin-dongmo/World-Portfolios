@@ -4,8 +4,8 @@ import Image from "next/image";
 import { Modal } from "react-bootstrap";
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Context } from "@/contexts/countryContext";
-import { ThemeContext } from "@/contexts/themeContext";
+import { Context } from "@/components/contexts/countryContext";
+import { ThemeContext } from "@/components/contexts/themeContext";
 import {
   CardCloseSvg,
   LogoSvg,

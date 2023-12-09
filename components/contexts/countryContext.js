@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import countries from "@/helpers/countries";
+import countries from "helpers/countries";
 import { useRouter, usePathname } from "next/navigation";
 
 export const Context = createContext();
@@ -9,7 +9,7 @@ const CountryContextProvider = ({ children }) => {
   const [country, setCountry] = useState(defaultCountry);
 
   const router = useRouter();
-  const pathname  = usePathname();
+  const pathname = usePathname();
 
   useEffect(() => {
     const pathSegments = pathname.split("/");

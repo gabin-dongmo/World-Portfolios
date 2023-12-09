@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 import { Theme } from "@/components/Icons";
 
 const localStorageThemeKey = "world-portfolio-app-theme";
@@ -7,7 +7,7 @@ export const ThemeContext = createContext({
   toggleTheme: () => {},
 });
 
-export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+const useTheme = () => {
   const savedTheme = localStorage.getItem(localStorageThemeKey) as Theme;
   const initialTheme = savedTheme ? savedTheme : "light";
   const [theme, setTheme] = useState<Theme>(initialTheme);
@@ -38,9 +38,10 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.setItem(localStorageThemeKey, newTheme);
   };
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return {
+    theme,
+    toggleTheme,
+  };
 };
+
+export default useTheme;

@@ -4,13 +4,13 @@ import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Context } from "@/contexts/countryContext";
+import { Context } from "@/components/contexts/countryContext";
 import Country from "@/interfaces/country.interface";
 
 type countryOption = {
   value: string;
   text: string;
-}
+};
 
 const Section = () => {
   const router = useRouter();
@@ -59,10 +59,7 @@ const Section = () => {
           <div className="list">
             <div className="list-countries">
               {countries.map((country: any) => (
-                <Link
-                  key={country.code}
-                  href={`/${country.code}`}
-                >
+                <Link key={country.code} href={`/${country.code}`}>
                   <Image
                     alt={country.name}
                     src={country.flag}
