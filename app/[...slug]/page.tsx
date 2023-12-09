@@ -11,7 +11,7 @@ import MainLogic from "@/utils/mainLogic";
 import { portfolios } from "@/helpers/portfolios";
 import countries from "@/helpers/countries";
 import { notFound } from "next/navigation";
-import { ThemeProvider } from "@/contexts/ThemeContext";
+import { ThemeProvider } from "@/contexts/themeContext";
 
 type PageProps = {
   params: {
@@ -21,7 +21,7 @@ type PageProps = {
 
 const getPortfolios = (slug: string) => {
   return portfolios.filter(
-    (groupedPortfolio) => groupedPortfolio.country === slug
+    (groupedPortfolio) => groupedPortfolio.country === slug,
   );
 };
 
@@ -29,7 +29,7 @@ export default function PortfolioList({ params }: PageProps) {
   const slug = params.slug[0];
 
   if (!countries.some((country) => country.code === slug)) {
-    notFound()
+    notFound();
   }
 
   const data = getPortfolios(slug);
