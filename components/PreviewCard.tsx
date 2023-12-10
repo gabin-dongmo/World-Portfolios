@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useContext } from "react";
 import { Context } from "@/components/contexts/countryContext";
 import { CardCloseSvg } from "./Icons";
-import CardSocial from "@/components/CardSocial.";
+import CardSocialMedia from "@/components/CardSocialMedia";
 import UserProfile from "@/interfaces/userProfile.interface";
 
 type Props = UserProfile & { handlePreviewCardClose: () => void };
@@ -50,9 +50,9 @@ export default function PreviewCard({
             ))}
           </div>
           <div className="card-socials">
-            <CardSocial handle={socials.twitter} media={"twitter"} />
-            <CardSocial handle={socials.github} media={"github"} />
-            <CardSocial handle={socials.linkedin} media={"linkedIn"} />
+            <CardSocialMedia handle={socials.twitter} media={"twitter"} />
+            <CardSocialMedia handle={socials.github} media={"github"} />
+            <CardSocialMedia handle={socials.linkedin} media={"linkedIn"} />
           </div>
 
           {typeof link === "string" && (

@@ -1,12 +1,11 @@
 import { createContext, useEffect, useRef, useState } from "react";
-import { Theme } from "@/components/Icons";
 
+export type Theme = "light" | "dark";
 const localStorageThemeKey = "world-portfolio-app-theme";
-export const ThemeContext = createContext({
+createContext({
   theme: "light" as Theme,
   toggleTheme: () => {},
 });
-
 const useTheme = () => {
   const savedTheme = localStorage.getItem(localStorageThemeKey) as Theme;
   const initialTheme = savedTheme ? savedTheme : "light";

@@ -1,9 +1,6 @@
-export type Theme = "light" | "dark";
-type ThemeProps = {
-  theme: Theme;
-};
+import { Theme } from "@/components/hooks/useTheme";
 
-export const ThemeSvg = ({ theme }: ThemeProps) => {
+export const ThemeSvg = ({ theme }: { theme: Theme }) => {
   if (theme === "light") {
     return (
       <svg

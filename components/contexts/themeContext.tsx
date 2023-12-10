@@ -1,6 +1,5 @@
 import React, { createContext } from "react";
-import { Theme } from "@/components/Icons";
-import useTheme from "@/components/hooks/useTheme";
+import useTheme, { Theme } from "@/components/hooks/useTheme";
 
 export const ThemeContext = createContext({
   theme: "light" as Theme,

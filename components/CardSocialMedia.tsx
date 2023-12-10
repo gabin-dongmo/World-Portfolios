@@ -6,7 +6,7 @@ import {
 import Link from "next/link";
 import SvgViewBox from "@/components/SvgViewBox";
 
-const CardSocial = ({
+const CardSocialMedia = ({
   handle,
   media,
 }: {
@@ -36,4 +36,4 @@ const CardSocial = ({
   );
 };
 
-export default CardSocial;
+export default CardSocialMedia;
