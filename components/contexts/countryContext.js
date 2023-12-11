@@ -1,14 +1,12 @@
 import React, { createContext, useEffect, useState } from "react";
 import countries from "helpers/countries";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 export const Context = createContext();
 
 const CountryContextProvider = ({ children }) => {
   const defaultCountry = countries.find((c) => c.code === "cm");
   const [country, setCountry] = useState(defaultCountry);
-
-  const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {

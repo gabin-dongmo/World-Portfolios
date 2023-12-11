@@ -1,4 +1,5 @@
 import { createContext, useEffect, useRef, useState } from "react";
+import useLocalStorage from "@/components/hooks/useLocalStorage";
 
 export type Theme = "light" | "dark";
 const localStorageThemeKey = "world-portfolio-app-theme";
@@ -7,38 +8,42 @@ createContext({
   toggleTheme: () => {},
 });
 const useTheme = () => {
-  const savedTheme = localStorage.getItem(localStorageThemeKey) as Theme;
-  const initialTheme = savedTheme ? savedTheme : "light";
-  const [theme, setTheme] = useState<Theme>(initialTheme);
-  localStorage.setItem(localStorageThemeKey, theme);
+  const [storedTheme, storeTheme] = useLocalStorage<Theme>(
+    localStorageThemeKey,
+    "light"
+  );
+  const [currentTheme, setCurrentTheme] = useState<Theme>(storedTheme);
   const bodyElement = useRef<HTMLElement>(null!);
 
   useEffect(() => {
     bodyElement.current = document.body;
-    const savedTheme = localStorage.getItem(localStorageThemeKey) as Theme;
-    if (savedTheme) {
-      setTheme(savedTheme);
+    if (storedTheme) {
+      updateTheme(storedTheme);
     }
   }, []);
 
   useEffect(() => {
-    if (theme === "light") {
+    if (currentTheme === "light") {
       bodyElement.current.classList.remove("dark");
       bodyElement.current.classList.add("light");
     } else {
       bodyElement.current.classList.remove("light");
       bodyElement.current.classList.add("dark");
     }
-  }, [theme]);
+  }, [currentTheme]);
 
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem(localStorageThemeKey, newTheme);
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+    updateTheme(newTheme);
+  };
+
+  const updateTheme = (newTheme: Theme) => {
+    setCurrentTheme(newTheme);
+    storeTheme(newTheme);
   };
 
   return {
-    theme,
+    theme: currentTheme,
     toggleTheme,
   };
 };
