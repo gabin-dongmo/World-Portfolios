@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import { Modal } from "react-bootstrap";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Context } from "@/components/contexts/countryContext";
+import { CountryContext } from "@/components/contexts/countryContext";
 import { ThemeContext } from "@/components/contexts/themeContext";
 import {
   CardCloseSvg,
@@ -24,9 +24,7 @@ const NavBar = ({
   };
   const router = useRouter();
   const { theme, toggleTheme } = useContext(ThemeContext);
-  const {
-    country: { name: countryName, flag: countryFlag },
-  } = useContext(Context);
+  const { country } = useContext(CountryContext);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const toggleModalVisibility = () => {
@@ -107,14 +105,16 @@ const NavBar = ({
       <nav className="nav" id="#nav">
         <div className="nav-container">
           <div className="nav-container-left">
-            <div className="nav-container-left-flag">
-              <Image
-                alt={countryName}
-                src={countryFlag}
-                width={500}
-                height={500}
-              />
-            </div>
+            {country && (
+              <div className="nav-container-left-flag">
+                <Image
+                  alt={country.name}
+                  src={country.flag}
+                  width={500}
+                  height={500}
+                />
+              </div>
+            )}
             <a href="https://wp.lndev.me/" className="nav-container-left-logo">
               <LogoSvg />
             </a>

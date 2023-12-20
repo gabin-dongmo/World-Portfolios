@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
-import { Context } from "@/components/contexts/countryContext";
+import { CountryContext } from "@/components/contexts/countryContext";
 import { CardCloseSvg } from "./Icons";
 import CardSocialMedia from "@/components/CardSocialMedia";
 import UserProfile from "@/interfaces/userProfile.interface";
@@ -16,9 +16,7 @@ export default function PreviewCard({
   socials,
   handlePreviewCardClose,
 }: Props) {
-  const {
-    country: { code: currentCountryCode, name: currentCountryName },
-  } = useContext(Context);
+  const { country } = useContext(CountryContext);
   const buildInitials = (name: string) => {
     const cleanName = name.split(" ");
     return cleanName[1] === undefined
@@ -33,12 +31,14 @@ export default function PreviewCard({
           <CardCloseSvg />
         </button>
         <div className="card-banner">
-          <Image
-            width={384}
-            height={274}
-            src={`/assets/images/${currentCountryCode}/card-portfolio.png`}
-            alt={`${currentCountryName} Card Banner`}
-          />
+          {country && (
+            <Image
+              width={384}
+              height={274}
+              src={`/assets/images/${country.code}/card-portfolio.png`}
+              alt={`${country.name} Card Banner`}
+            />
+          )}
 
           <h1>{buildInitials(name)}</h1>
         </div>

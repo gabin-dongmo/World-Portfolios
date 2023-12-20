@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Context } from "@/components/contexts/countryContext";
+import { CountryContext } from "@/components/contexts/countryContext";
 import Country from "@/interfaces/country.interface";
 
 type countryOption = {
@@ -14,8 +14,7 @@ type countryOption = {
 
 const Section = () => {
   const router = useRouter();
-  const { country, countries } = useContext(Context);
-  const { name: currentCountryName } = country;
+  const { country, countries } = useContext(CountryContext);
 
   let options: countryOption[] = countries.map((c: Country) => {
     return {
@@ -52,10 +51,12 @@ const Section = () => {
               ))}
             </select>
           </div>
-          <span>
-            Currently you visit the portfolios of :{" "}
-            <span>{currentCountryName}</span>
-          </span>
+          {country && (
+            <span>
+              Currently you visit the portfolios of :{" "}
+              <span>{country.name}</span>
+            </span>
+          )}
           <div className="list">
             <div className="list-countries">
               {countries.map((country: any) => (
@@ -69,12 +70,6 @@ const Section = () => {
                 </Link>
               ))}
             </div>
-            <a
-              className="list-buymeacoffee"
-              href="https://www.buymeacoffee.com/lndev"
-            >
-              <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=lndev&button_colour=40DCA5&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00" />
-            </a>
           </div>
         </div>
       </div>

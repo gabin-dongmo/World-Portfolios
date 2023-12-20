@@ -3,7 +3,7 @@
 import Top from "@/components/ToTop";
 import Footer from "@/components/Footer";
 import { useContext } from "react";
-import { Context } from "@/components/contexts/countryContext";
+import { CountryContext } from "@/components/contexts/countryContext";
 import Link from "next/link";
 import { Metadata } from "next";
 
@@ -12,7 +12,7 @@ import { Metadata } from "next";
 // };
 
 export default function NotFound() {
-  const { countries } = useContext(Context);
+  const { countries } = useContext(CountryContext);
 
   return (
     <div className="App">
