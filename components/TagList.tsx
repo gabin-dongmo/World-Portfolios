@@ -1,34 +1,33 @@
-const TagList = ({
-  filteredData,
-  setTag,
-  tags,
-  selectedTags,
-}: {
-  filteredData: any;
-  setTag: (tag: string) => void;
-  tags: string[];
-  selectedTags: string[];
-}) => (
-  <>
-    <h2>Filter by ({filteredData.length}) </h2>
-    <div className="main-container-aside-tags">
-      <button
-        onClick={() => setTag("all")}
-        className={selectedTags.indexOf("all") !== -1 ? "active" : ""}
-      >
-        All tags
-      </button>
-      {tags.map((tag, index) => (
+import { useContext } from "react";
+import { BusinessLogicContext } from "@/components/contexts/businessLogicContext";
+import extractTags from "@/utils/extractTags";
+
+const TagList = () => {
+  const { profiles, filteredData, selectedTags, setTag } =
+    useContext(BusinessLogicContext);
+  const tags = extractTags(profiles) as string[];
+  return (
+    <>
+      <h2>Filter by ({filteredData.length}) </h2>
+      <div className="main-container-aside-tags">
         <button
-          onClick={() => setTag(tag)}
-          className={selectedTags.indexOf(tag) !== -1 ? "active" : ""}
-          key={index}
+          onClick={() => setTag("all")}
+          className={selectedTags.indexOf("all") !== -1 ? "active" : ""}
         >
-          {tag}
+          All tags
         </button>
-      ))}
-    </div>
-  </>
-);
+        {tags.map((tag, index) => (
+          <button
+            onClick={() => setTag(tag)}
+            className={selectedTags.indexOf(tag) !== -1 ? "active" : ""}
+            key={index}
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+    </>
+  );
+};
 
 export default TagList;

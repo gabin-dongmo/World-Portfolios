@@ -2,11 +2,14 @@
 import React from "react";
 import CountryContextProvider from "@/components/contexts/countryContext";
 import { ThemeProvider } from "@/components/contexts/themeContext";
+import { BusinessLogicProvider } from "@/components/contexts/businessLogicContext";
 
 export default function Providers({ children }: React.PropsWithChildren) {
   return (
     <ThemeProvider>
-      <CountryContextProvider>{children}</CountryContextProvider>
+      <CountryContextProvider>
+        <BusinessLogicProvider>{children}</BusinessLogicProvider>
+      </CountryContextProvider>
     </ThemeProvider>
   );
 }

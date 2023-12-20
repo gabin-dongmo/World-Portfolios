@@ -13,14 +13,12 @@ import {
   SubmitFormSvg,
   ThemeSvg,
 } from "./Icons";
+import { BusinessLogicContext } from "@/components/contexts/businessLogicContext";
 
-const NavBar = ({
-  onChangeValue,
-}: {
-  onChangeValue: (value: string) => void;
-}) => {
+const NavBar = () => {
+  const { filterByName } = useContext(BusinessLogicContext);
   const handelChangeFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChangeValue(e.target.value);
+    filterByName(e.target.value);
   };
   const router = useRouter();
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -76,7 +74,6 @@ const NavBar = ({
           </div>
         </div>
       </Modal>
-
       <Modal show={modalIsOpen} onHide={toggleModalVisibility}>
         <div className="add-modal">
           <div className="card">
@@ -102,6 +99,7 @@ const NavBar = ({
           </div>
         </div>
       </Modal>
+
       <nav className="nav" id="#nav">
         <div className="nav-container">
           <div className="nav-container-left">
