@@ -4,14 +4,11 @@ import CardList from "@/components/CardList";
 import TagList from "@/components/TagList";
 import NavBar from "@/components/Navbar";
 import Section from "@/components/Section";
-import Top from "@/components/ToTop";
 import extractTags from "@/utils/extractTags";
-import Footer from "@/components/Footer";
 import MainLogic from "@/utils/mainLogic";
 import { portfolios } from "@/helpers/portfolios";
 import countries from "@/helpers/countries";
 import { notFound } from "next/navigation";
-import { ThemeProvider } from "@/components/contexts/themeContext";
 
 type PageProps = {
   params: {
@@ -36,8 +33,7 @@ export default function PortfolioList({ params }: PageProps) {
   const { filteredData, selectedTags, setTag, filterByName } = MainLogic(data);
 
   return (
-    <div className="App">
-      <Top />
+    <>
       <NavBar onChangeValue={filterByName} />
       <Section />
       <main className="main">
@@ -55,7 +51,6 @@ export default function PortfolioList({ params }: PageProps) {
           </div>
         </div>
       </main>
-      <Footer />
-    </div>
+    </>
   );
 }
