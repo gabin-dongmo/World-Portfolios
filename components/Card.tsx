@@ -15,7 +15,9 @@ const cleanUrl = (link: string) => {
   );
 };
 
-export default function Header({ name, link, tags, socials }: UserProfile) {
+export default function Header({ profile }: { profile: UserProfile }) {
+  const { name, link, tags, socials } = profile;
+  const formattedTags = tags.map((tag) => tag.toLowerCase());
   const [previewCardIsOpen, setPreviewCardIsOpen] = useState(false);
   const togglePreviewCardVisibility = () => {
     setPreviewCardIsOpen(!previewCardIsOpen);
@@ -28,7 +30,7 @@ export default function Header({ name, link, tags, socials }: UserProfile) {
           handlePreviewCardClose={togglePreviewCardVisibility}
           name={name}
           link={link}
-          tags={tags}
+          tags={formattedTags}
           socials={socials}
         />
       </Modal>
@@ -64,7 +66,7 @@ export default function Header({ name, link, tags, socials }: UserProfile) {
           )}
         </div>
         <div className="card-tags">
-          {tags.map((tag, index) => (
+          {formattedTags.map((tag, index) => (
             <span key={index}>{tag}</span>
           ))}
         </div>

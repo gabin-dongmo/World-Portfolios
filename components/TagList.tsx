@@ -3,12 +3,12 @@ import { BusinessLogicContext } from "@/components/contexts/businessLogicContext
 import extractTags from "@/utils/extractTags";
 
 const TagList = () => {
-  const { profiles, filteredData, selectedTags, setTag } =
+  const { profiles, filteredProfiles, selectedTags, setTag } =
     useContext(BusinessLogicContext);
   const tags = extractTags(profiles) as string[];
   return (
     <>
-      <h2>Filter by ({filteredData.length}) </h2>
+      <h2>Filter by ({filteredProfiles.length}) </h2>
       <div className="main-container-aside-tags">
         <button
           onClick={() => setTag("all")}

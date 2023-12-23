@@ -1,19 +1,10 @@
 import React, { createContext, useEffect, useState } from "react";
 import { portfolios } from "@/helpers/portfolios";
 import type UserProfile from "@/interfaces/userProfile.interface";
-import sortedData from "@/utils/sortedData";
-
-interface Profile {
-  id: string;
-  name: string;
-  link: string | string[];
-  tags: string[];
-  socials: { twitter: string; github: string; linkedin: string };
-}
-
+import sortProfiles from "@/utils/sortProfiles";
 export const BusinessLogicContext = createContext({
   profiles: [] as UserProfile[],
-  filteredData: [] as Profile[],
+  filteredProfiles: [] as UserProfile[],
   selectedTags: [""],
   setTag: (tag: string) => {},
   filterByName: (filterValue: string) => {},
@@ -25,7 +16,9 @@ export const BusinessLogicProvider = ({
   children: React.ReactNode;
 }) => {
   const profiles = portfolios as UserProfile[];
-  const [filteredData, setFilteredData] = useState(sortedData(profiles));
+  const [filteredProfiles, setFilteredProfiles] = useState(
+    sortProfiles(profiles),
+  );
   const [selectedTags, setSelectedTags] = useState(["all"]);
 
   const setTag = (tag: string) => {
@@ -38,31 +31,31 @@ export const BusinessLogicProvider = ({
 
   const filterByName = (filterValue: string) => {
     if (filterValue !== "")
-      setFilteredData(
-        sortedData(profiles).filter((elem: any) => {
+      setFilteredProfiles(
+        sortProfiles(profiles).filter((elem: any) => {
           return (
             elem.name.toLowerCase().indexOf(filterValue.toLowerCase()) !== -1
           );
         }),
       );
-    else setFilteredData(sortedData(profiles));
+    else setFilteredProfiles(sortProfiles(profiles));
   };
 
   useEffect(() => {
     if (selectedTags.indexOf("all") === -1 && selectedTags.length > 0) {
-      setFilteredData(
-        sortedData(profiles).filter((elem: any) =>
+      setFilteredProfiles(
+        sortProfiles(profiles).filter((elem: any) =>
           selectedTags.every((tag) =>
             elem.tags.map((e: string) => e.toLowerCase()).includes(tag),
           ),
         ),
       );
-    } else setFilteredData(sortedData(profiles));
+    } else setFilteredProfiles(sortProfiles(profiles));
   }, [selectedTags]);
 
   return (
     <BusinessLogicContext.Provider
-      value={{ profiles, filteredData, selectedTags, setTag, filterByName }}
+      value={{ profiles, filteredProfiles, selectedTags, setTag, filterByName }}
     >
       {children}
     </BusinessLogicContext.Provider>
