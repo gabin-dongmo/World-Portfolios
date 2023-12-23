@@ -13,13 +13,10 @@ import {
   SubmitFormSvg,
   ThemeSvg,
 } from "./Icons";
-import { BusinessLogicContext } from "@/components/contexts/businessLogicContext";
+import SearchBar from "@/components/SearchBar";
+import Link from "next/link";
 
 const NavBar = () => {
-  const { filterByName } = useContext(BusinessLogicContext);
-  const handelChangeFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    filterByName(e.target.value);
-  };
   const router = useRouter();
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { country } = useContext(CountryContext);
@@ -113,26 +110,12 @@ const NavBar = () => {
                 />
               </div>
             )}
-            <a href="https://wp.lndev.me/" className="nav-container-left-logo">
+            <Link href="/" className="nav-container-left-logo">
               <LogoSvg />
-            </a>
+            </Link>
           </div>
           <div className="nav-container-menu">
-            <div className="nav-container-menu-search">
-              <input
-                type="text"
-                onChange={handelChangeFilter}
-                placeholder="Search a portfolio ..."
-              />
-              <button>
-                <Image
-                  src="assets/search-eye-line.svg"
-                  alt="search"
-                  width={22}
-                  height={22}
-                />
-              </button>
-            </div>
+            <SearchBar />
             <button
               onClick={toggleModalVisibility}
               className="nav-container-menu-link"
