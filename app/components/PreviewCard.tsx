@@ -3,19 +3,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
-import { CountryContext } from "@/components/contexts/countryContext";
+import { CountryContext } from "@/app/components/contexts/countryContext";
 import { CardCloseSvg } from "./Icons";
-import CardSocialMedia from "@/components/CardSocialMedia";
+import CardSocialMedia from "@/app/components/CardSocialMedia";
 import UserProfile from "@/interfaces/userProfile.interface";
 
 type Props = UserProfile & { handlePreviewCardClose: () => void };
-export default function PreviewCard({
+const PreviewCard = ({
   name,
   link,
   tags,
   socials,
   handlePreviewCardClose,
-}: Props) {
+}: Props) => {
   const { country } = useContext(CountryContext);
   const buildInitials = (name: string) => {
     const cleanName = name.split(" ");
@@ -78,4 +78,6 @@ export default function PreviewCard({
       </div>
     </div>
   );
-}
+};
+
+export default PreviewCard;

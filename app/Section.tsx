@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { CountryContext } from "@/components/contexts/countryContext";
+import { CountryContext } from "@/app/components/contexts/countryContext";
 import Country from "@/interfaces/country.interface";
 
 type countryOption = {

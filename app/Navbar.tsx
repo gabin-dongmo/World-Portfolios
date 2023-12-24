@@ -4,16 +4,16 @@ import Image from "next/image";
 import { Modal } from "react-bootstrap";
 import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { CountryContext } from "@/components/contexts/countryContext";
-import { ThemeContext } from "@/components/contexts/themeContext";
+import { CountryContext } from "@/app/components/contexts/countryContext";
+import { ThemeContext } from "@/app/components/contexts/themeContext";
 import {
   CardCloseSvg,
   LogoSvg,
   MergeRequestSvg,
   SubmitFormSvg,
   ThemeSvg,
-} from "./Icons";
-import SearchBar from "@/components/SearchBar";
+} from "./components/Icons";
+import SearchBar from "@/app/components/SearchBar";
 import Link from "next/link";
 
 const NavBar = () => {
@@ -110,7 +110,7 @@ const NavBar = () => {
                 />
               </div>
             )}
-            <Link href="/" className="nav-container-left-logo">
+            <Link href="/public" className="nav-container-left-logo">
               <LogoSvg />
             </Link>
           </div>

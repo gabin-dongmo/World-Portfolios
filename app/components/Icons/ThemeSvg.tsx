@@ -1,6 +1,6 @@
-import { Theme } from "@/components/hooks/useTheme";
+import { Theme } from "@/app/components/hooks/useTheme";
 
-export const ThemeSvg = ({ theme }: { theme: Theme }) => {
+const ThemeSvg = ({ theme }: { theme: Theme }) => {
   if (theme === "light") {
     return (
       <svg
@@ -43,3 +43,5 @@ export const ThemeSvg = ({ theme }: { theme: Theme }) => {
     </svg>
   );
 };
+
+export default ThemeSvg;

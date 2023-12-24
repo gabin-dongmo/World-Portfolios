@@ -15,7 +15,7 @@ const cleanUrl = (link: string) => {
   );
 };
 
-export default function Header({ profile }: { profile: UserProfile }) {
+const Card = ({ profile }: { profile: UserProfile }) => {
   const { name, link, tags, socials } = profile;
   const formattedTags = tags.map((tag) => tag.toLowerCase());
   const [previewCardIsOpen, setPreviewCardIsOpen] = useState(false);
@@ -73,4 +73,6 @@ export default function Header({ profile }: { profile: UserProfile }) {
       </div>
     </>
   );
-}
+};
+
+export default Card;

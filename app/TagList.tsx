@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { BusinessLogicContext } from "@/components/contexts/businessLogicContext";
+import { BusinessLogicContext } from "@/app/components/contexts/businessLogicContext";
 import extractTags from "@/utils/extractTags";
 
 const TagList = () => {

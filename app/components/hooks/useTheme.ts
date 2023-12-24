@@ -1,5 +1,5 @@
 import { createContext, useEffect, useRef, useState } from "react";
-import useLocalStorage from "@/components/hooks/useLocalStorage";
+import useLocalStorage from "@/app/components/hooks/useLocalStorage";
 
 export type Theme = "light" | "dark";
 const localStorageThemeKey = "world-portfolio-app-theme";
@@ -10,7 +10,7 @@ createContext({
 const useTheme = () => {
   const [storedTheme, storeTheme] = useLocalStorage<Theme>(
     localStorageThemeKey,
-    "light"
+    "light",
   );
   const [currentTheme, setCurrentTheme] = useState<Theme>(storedTheme);
   const bodyElement = useRef<HTMLElement>(null!);

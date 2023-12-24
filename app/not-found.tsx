@@ -1,9 +1,9 @@
 "use client";
 
-import Top from "@/components/ToTop";
-import Footer from "@/components/Footer";
+import Top from "@/app/components/ToTop";
+import Footer from "@/app/Footer";
 import { useContext } from "react";
-import { CountryContext } from "@/components/contexts/countryContext";
+import { CountryContext } from "@/app/components/contexts/countryContext";
 import Link from "next/link";
 import { Metadata } from "next";
 

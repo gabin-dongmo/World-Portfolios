@@ -1,7 +1,7 @@
 type GithubIconContext = {
   context: "default" | "footer";
 };
-export const GithubSvg = ({ context }: GithubIconContext) => {
+const GitHubSvg = ({ context }: GithubIconContext) => {
   if (context === "footer") {
     return (
       <svg
@@ -35,3 +35,5 @@ export const GithubSvg = ({ context }: GithubIconContext) => {
     </svg>
   );
 };
+
+export default GitHubSvg;

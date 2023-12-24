@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Image from "next/image";
-import { BusinessLogicContext } from "@/components/contexts/businessLogicContext";
+import { BusinessLogicContext } from "@/app/components/contexts/businessLogicContext";
 
 const SearchBar = () => {
   const { filterByName } = useContext(BusinessLogicContext);

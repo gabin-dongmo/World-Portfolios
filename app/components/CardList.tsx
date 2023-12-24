@@ -2,7 +2,7 @@
 
 import Card from "./Card";
 import { useContext } from "react";
-import { BusinessLogicContext } from "@/components/contexts/businessLogicContext";
+import { BusinessLogicContext } from "@/app/components/contexts/businessLogicContext";
 
 const CardList = () => {
   const { filteredProfiles } = useContext(BusinessLogicContext);
@@ -15,4 +15,5 @@ const CardList = () => {
     </>
   );
 };
+
 export default CardList;

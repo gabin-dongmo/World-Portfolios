@@ -1,4 +1,4 @@
-export const CardCloseSvg = () => {
+const CardCloseSvg = () => {
   return (
     <svg
       width="46"
@@ -16,3 +16,5 @@ export const CardCloseSvg = () => {
     </svg>
   );
 };
+
+export default CardCloseSvg;

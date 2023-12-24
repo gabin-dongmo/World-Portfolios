@@ -4,7 +4,7 @@ import {
   socialMediaSvgs,
 } from "@/utils/svgSocials";
 import Link from "next/link";
-import SvgViewBox from "@/components/SvgViewBox";
+import SvgViewBox from "@/app/components/SvgViewBox";
 
 const CardSocialMedia = ({
   handle,

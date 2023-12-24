@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GithubSvg } from "./Icons";
+import { GitHubSvg } from "@/app/components/Icons";
 
 const Footer = () => {
   return (
@@ -14,7 +14,7 @@ const Footer = () => {
           href="https://github.com/ln-dev7/world-portfolios"
           target="_blank"
         >
-          <GithubSvg context="footer" />
+          <GitHubSvg context="footer" />
         </Link>
       </div>
     </footer>

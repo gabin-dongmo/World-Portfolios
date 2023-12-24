@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import Providers from "@/utils/provider";
 import "@/styles/globals.scss";
 import { inter, overpass } from "@/utils/fonts";
-import Top from "@/components/ToTop";
-import Footer from "@/components/Footer";
+import Top from "@/app/components/ToTop";
+import Footer from "@/app/Footer";
 
 export const metadata: Metadata = {
   title: {

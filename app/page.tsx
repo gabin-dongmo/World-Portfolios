@@ -1,9 +1,9 @@
 "use client";
 
-import NavBar from "@/components/Navbar";
-import Section from "@/components/Section";
-import TagList from "@/components/TagList";
-import CardList from "@/components/CardList";
+import NavBar from "@/app/Navbar";
+import Section from "@/app/Section";
+import TagList from "@/app/TagList";
+import CardList from "@/app/components/CardList";
 
 export default function Home() {
   return (
