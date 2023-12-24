@@ -16,12 +16,10 @@ const Section = () => {
   const router = useRouter();
   const { country, countries } = useContext(CountryContext);
 
-  let options: countryOption[] = countries.map((c: Country) => {
-    return {
-      value: c.code,
-      text: c.name,
-    };
-  });
+  let options: countryOption[] = countries.map((c: Country) => ({
+    value: c.code,
+    text: c.name,
+  }));
 
   options = [
     { value: "", text: "What country do you want to consult ?" },

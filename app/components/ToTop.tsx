@@ -4,9 +4,10 @@ import { useRef, useEffect, useState } from "react";
 import { ToTopSvg } from "./Icons";
 
 const Top = () => {
-  const [position, setPosition] = useState<
-    { top: number; left: number } | undefined
-  >({ top: 0, left: 0 });
+  const [position, setPosition] = useState<{ top: number; left: number }>({
+    top: 0,
+    left: 0,
+  });
   const scrollTop = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
