@@ -14,9 +14,9 @@ export default function Home() {
           <aside className="main-container-aside">
             <TagList />
           </aside>
-          <div className="main-container-body">
+          <section className="main-container-section">
             <CardList />
-          </div>
+          </section>
         </div>
       </main>
     </>
