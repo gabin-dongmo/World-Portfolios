@@ -1,5 +1,4 @@
 "use client";
-
 import NavBar from "@/app/Navbar";
 import Section from "@/app/Section";
 import TagList from "@/app/TagList";

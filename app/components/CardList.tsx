@@ -1,5 +1,3 @@
-"use client";
-
 import Card from "./Card";
 import { useContext } from "react";
 import { BusinessLogicContext } from "@/app/components/contexts/businessLogicContext";

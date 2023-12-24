@@ -17,9 +17,8 @@ export const BusinessLogicProvider = ({
   children: React.ReactNode;
 }) => {
   const profiles = portfolios;
-  const [filteredProfiles, setFilteredProfiles] = useState(
-    sortProfiles(profiles),
-  );
+  const sortedPortfolios = sortProfiles(profiles);
+  const [filteredProfiles, setFilteredProfiles] = useState(sortedPortfolios);
   const [selectedTags, setSelectedTags] = useState(["all"]);
 
   const setTag = (tag: string) => {
@@ -33,26 +32,26 @@ export const BusinessLogicProvider = ({
   const filterByName = (filterValue: string) => {
     if (filterValue !== "")
       setFilteredProfiles(
-        sortProfiles(profiles).filter((elem: any) => {
-          return (
-            elem.name.toLowerCase().indexOf(filterValue.toLowerCase()) !== -1
-          );
-        }),
+        sortedPortfolios.filter(
+          (portfolio: Portfolio) =>
+            portfolio.name.toLowerCase().indexOf(filterValue.toLowerCase()) !==
+            -1,
+        ),
       );
-    else setFilteredProfiles(sortProfiles(profiles));
+    else setFilteredProfiles(sortedPortfolios);
   };
 
   useEffect(() => {
     if (selectedTags.indexOf("all") === -1 && selectedTags.length > 0) {
       setFilteredProfiles(
-        sortProfiles(profiles).filter((elem: any) =>
+        sortedPortfolios.filter((portfolio: Portfolio) =>
           selectedTags.every((tag) =>
-            elem.tags.map((e: string) => e.toLowerCase()).includes(tag),
+            portfolio.tags.map((e: string) => e.toLowerCase()).includes(tag),
           ),
         ),
       );
-    } else setFilteredProfiles(sortProfiles(profiles));
-  }, [selectedTags]);
+    } else setFilteredProfiles(sortedPortfolios);
+  }, [selectedTags, sortedPortfolios]);
 
   return (
     <BusinessLogicContext.Provider
