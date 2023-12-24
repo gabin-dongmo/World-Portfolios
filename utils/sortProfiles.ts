@@ -1,6 +1,6 @@
-import type UserProfile from "@/interfaces/userProfile.interface";
+import { Portfolio } from "@/interfaces/portfolio.interface";
 
-const sortProfiles = (profiles: UserProfile[]) => {
+const sortProfiles = (profiles: Portfolio[]) => {
   return profiles.sort((a, b) =>
     a.name < b.name ? -1 : a.name > b.name ? 1 : 0,
   );

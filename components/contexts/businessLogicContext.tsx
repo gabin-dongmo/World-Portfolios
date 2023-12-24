@@ -1,10 +1,11 @@
 import React, { createContext, useEffect, useState } from "react";
 import { portfolios } from "@/helpers/portfolios";
-import type UserProfile from "@/interfaces/userProfile.interface";
 import sortProfiles from "@/utils/sortProfiles";
+import { Portfolio } from "@/interfaces/portfolio.interface";
+
 export const BusinessLogicContext = createContext({
-  profiles: [] as UserProfile[],
-  filteredProfiles: [] as UserProfile[],
+  profiles: [] as Portfolio[],
+  filteredProfiles: [] as Portfolio[],
   selectedTags: [""],
   setTag: (tag: string) => {},
   filterByName: (filterValue: string) => {},
@@ -15,7 +16,7 @@ export const BusinessLogicProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const profiles = portfolios as UserProfile[];
+  const profiles = portfolios;
   const [filteredProfiles, setFilteredProfiles] = useState(
     sortProfiles(profiles),
   );
