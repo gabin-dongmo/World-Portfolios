@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { BusinessLogicContext } from "@/app/components/contexts/businessLogicContext";
+import { DataContext } from "@/app/components/contexts/dataContext";
 
 const SearchBar = () => {
-  const { filterByName } = useContext(BusinessLogicContext);
+  const { filterByName } = useContext(DataContext);
 
   return (
     <div className="nav-container-menu-search">

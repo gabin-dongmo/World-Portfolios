@@ -1,9 +1,9 @@
+"use client";
 import React, { createContext, useEffect, useState } from "react";
 import { portfolios } from "@/helpers/portfolios";
-import sortProfiles from "@/utils/sortProfiles";
 import { Portfolio } from "@/interfaces/portfolio.interface";
 
-export const BusinessLogicContext = createContext({
+export const DataContext = createContext({
   profiles: [] as Portfolio[],
   filteredProfiles: [] as Portfolio[],
   selectedTags: [""],
@@ -11,11 +11,13 @@ export const BusinessLogicContext = createContext({
   filterByName: (filterValue: string) => {},
 });
 
-export const BusinessLogicProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+const sortProfiles = (profiles: Portfolio[]) => {
+  return profiles.sort((a, b) =>
+    a.name < b.name ? -1 : a.name > b.name ? 1 : 0,
+  );
+};
+
+export const DataProvider = ({ children }: { children: React.ReactNode }) => {
   const profiles = portfolios;
   const sortedPortfolios = sortProfiles(profiles);
   const [filteredProfiles, setFilteredProfiles] = useState(sortedPortfolios);
@@ -54,10 +56,10 @@ export const BusinessLogicProvider = ({
   }, [selectedTags, sortedPortfolios]);
 
   return (
-    <BusinessLogicContext.Provider
+    <DataContext.Provider
       value={{ profiles, filteredProfiles, selectedTags, setTag, filterByName }}
     >
       {children}
-    </BusinessLogicContext.Provider>
+    </DataContext.Provider>
   );
 };

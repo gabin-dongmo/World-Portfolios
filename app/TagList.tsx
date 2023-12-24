@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { BusinessLogicContext } from "@/app/components/contexts/businessLogicContext";
-import extractTags from "@/utils/extractTags";
+import { DataContext } from "@/app/components/contexts/dataContext";
+import { Portfolio } from "@/interfaces/portfolio.interface";
 
 const TagList = () => {
   const { profiles, filteredProfiles, selectedTags, setTag } =
-    useContext(BusinessLogicContext);
+    useContext(DataContext);
   const tags = extractTags(profiles) as string[];
   return (
     <>
@@ -28,6 +28,17 @@ const TagList = () => {
       </div>
     </>
   );
+};
+
+const extractTags = (portfolios: Portfolio[]) => {
+  return portfolios.reduce((result: string[], portfolio) => {
+    portfolio.tags.forEach((tag) => {
+      if (!result.map((a) => a.toLowerCase()).includes(tag.toLowerCase())) {
+        result.push(tag.toLowerCase());
+      }
+    });
+    return result;
+  }, []);
 };
 
 export default TagList;

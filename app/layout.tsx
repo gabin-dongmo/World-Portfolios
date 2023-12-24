@@ -1,10 +1,26 @@
 import React from "react";
 import type { Metadata } from "next";
-import Providers from "@/utils/provider";
 import "@/styles/globals.scss";
-import { inter, overpass } from "@/utils/fonts";
 import Top from "@/app/components/ToTop";
 import Footer from "@/app/Footer";
+import { Inter, Overpass } from "next/font/google";
+import CountryContextProvider from "@/app/components/contexts/countryContext";
+import { DataProvider } from "@/app/components/contexts/dataContext";
+import { ThemeProvider } from "@/app/components/contexts/themeContext";
+
+const inter = Inter({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
+const overpass = Overpass({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-overpass",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -25,7 +41,11 @@ export default function RootLayout({
       <body>
         <div className="App">
           <Top />
-          <Providers>{children}</Providers>
+          <ThemeProvider>
+            <CountryContextProvider>
+              <DataProvider>{children}</DataProvider>
+            </CountryContextProvider>
+          </ThemeProvider>{" "}
           <Footer />
         </div>
       </body>

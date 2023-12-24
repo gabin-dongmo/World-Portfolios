@@ -1,9 +1,9 @@
 import Card from "./Card";
 import { useContext } from "react";
-import { BusinessLogicContext } from "@/app/components/contexts/businessLogicContext";
+import { DataContext } from "@/app/components/contexts/dataContext";
 
 const CardList = () => {
-  const { filteredProfiles } = useContext(BusinessLogicContext);
+  const { filteredProfiles } = useContext(DataContext);
   return (
     <>
       {filteredProfiles.map((profile, index) => (
