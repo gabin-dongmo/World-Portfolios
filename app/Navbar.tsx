@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import React, { useContext } from "react";
 import { CountryContext } from "@/app/components/contexts/countryContext";

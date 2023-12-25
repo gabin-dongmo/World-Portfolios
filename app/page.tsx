@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import NavBar from "@/app/Navbar";
 import Section from "@/app/Section";
@@ -7,19 +6,15 @@ import CardListContainer from "@/app/components/CardListContainer";
 
 export default function Home() {
   return (
-    <>
-      <NavBar />
-      <Section />
-      <main className="main">
-        <div className="main-container">
-          <aside className="main-container-aside">
-            <TagList />
-          </aside>
-          <section className="main-container-section">
-            <CardListContainer />
-          </section>
-        </div>
-      </main>
-    </>
+    <main className="main">
+      <div className="main-container">
+        <aside className="main-container-aside">
+          <TagList />
+        </aside>
+        <section className="main-container-section">
+          <CardListContainer />
+        </section>
+      </div>
+    </main>
   );
 }

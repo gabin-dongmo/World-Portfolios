@@ -1,3 +1,4 @@
+"use client";
 import React, { useContext } from "react";
 import Card from "./Card";
 import { DataContext } from "@/app/components/contexts/dataContext";

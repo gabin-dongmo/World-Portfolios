@@ -7,6 +7,8 @@ import { Inter, Overpass } from "next/font/google";
 import CountryContextProvider from "@/app/components/contexts/countryContext";
 import { DataProvider } from "@/app/components/contexts/dataContext";
 import { ThemeProvider } from "@/app/components/contexts/themeContext";
+import NavBar from "@/app/Navbar";
+import Section from "@/app/Section";
 
 const inter = Inter({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -40,13 +42,15 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${overpass.variable}`}>
       <body>
         <div className="App">
-          <Top />
           <ThemeProvider>
             <CountryContextProvider>
+              <Top />
+              <NavBar />
+              <Section />
               <DataProvider>{children}</DataProvider>
+              <Footer />
             </CountryContextProvider>
           </ThemeProvider>{" "}
-          <Footer />
         </div>
       </body>
     </html>

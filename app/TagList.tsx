@@ -1,3 +1,4 @@
+"use client";
 import { useContext } from "react";
 import { DataContext } from "@/app/components/contexts/dataContext";
 import { Portfolio } from "@/interfaces/portfolio.interface";
