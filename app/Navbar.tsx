@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import { CountryContext } from "@/app/components/contexts/countryContext";
 import { ThemeContext } from "@/app/components/contexts/themeContext";
 import { LogoSvg, ThemeSvg } from "./components/Icons";
-import SearchBar from "@/app/components/SearchBar";
 import Link from "next/link";
 
 const NavBar = () => {
@@ -30,7 +29,6 @@ const NavBar = () => {
             </Link>
           </div>
           <div className="nav-container-menu">
-            <SearchBar />
             <button onClick={toggleTheme} className="nav-container-menu-mode">
               <ThemeSvg theme={theme} />
             </button>

@@ -55,7 +55,7 @@
     }
     &-menu {
       display: flex;
-      justify-content: center;
+      justify-content: right;
       align-items: center;
       gap: 0.75rem;
       width: 50%;
@@ -64,39 +64,6 @@
       }
       @media screen and (max-width: 960px) {
         width: 100%;
-      }
-      &-search {
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        input {
-          padding: 0.5rem 2.5rem 0.5rem 1rem;
-          outline: none;
-          border-radius: 5px;
-          border: 2px solid rgba($color: $gray, $alpha: 0.3);
-          background: $light;
-          width: 100%;
-          height: 100%;
-          font-weight: 500;
-          color: rgba($color: $gray, $alpha: 0.75);
-        }
-        button {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          position: absolute;
-          padding: 0.2rem;
-          right: 0.25rem;
-          top: 50%;
-          transform: translate(0, -50%);
-          border-radius: 2px;
-          border: none;
-          cursor: pointer;
-          width: 30px;
-          img {
-            width: 17px;
-          }
-        }
       }
       &-link {
         flex-shrink: 0;

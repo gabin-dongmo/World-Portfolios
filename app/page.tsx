@@ -1,8 +1,9 @@
 "use client";
+import React from "react";
 import NavBar from "@/app/Navbar";
 import Section from "@/app/Section";
 import TagList from "@/app/TagList";
-import CardList from "@/app/components/CardList";
+import CardListContainer from "@/app/components/CardListContainer";
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
             <TagList />
           </aside>
           <section className="main-container-section">
-            <CardList />
+            <CardListContainer />
           </section>
         </div>
       </main>
