@@ -54,7 +54,7 @@ export default function RootLayout({
               </main>
               <Footer />
             </CountryContextProvider>
-          </ThemeProvider>{" "}
+          </ThemeProvider>
         </div>
       </body>
     </html>
