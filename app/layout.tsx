@@ -47,7 +47,11 @@ export default function RootLayout({
               <Top />
               <NavBar />
               <Section />
-              <DataProvider>{children}</DataProvider>
+              <main className="main">
+                <div className="main-container">
+                  <DataProvider>{children}</DataProvider>
+                </div>
+              </main>
               <Footer />
             </CountryContextProvider>
           </ThemeProvider>{" "}
